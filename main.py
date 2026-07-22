@@ -22,13 +22,13 @@ def Markdowns_fixer(df,Markdown_name):
             return float(split_arr[1])
         else:
             return float(split_arr[0])
-    print(f"Before imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
+    #print(f"Before imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
     print("\n") 
     df[Markdown_name] = df[Markdown_name].apply(lambda x: unit_fixer(x))
-    '''df[Markdown_name] = df[Markdown_name].apply(lambda x: type(x))''' #Testing the type of the Markdown_name column after applying the unit_fixer function
+    #df[Markdown_name] = df[Markdown_name].apply(lambda x: type(x)) Testing the type of the Markdown_name column after applying the unit_fixer function
     median_markdown = df[Markdown_name].median() # calculating the median
     df[Markdown_name] = df[Markdown_name].fillna(median_markdown) # replacing missing values without chained inplace assignment
-    print(f"After imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
+    #print(f"After imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
     return df
 '''
 
