@@ -36,6 +36,7 @@ def Unemployment_cleaner(df_copy):
   median_unemployment = df_copy["Unemployment"].median()
   df_copy["Unemployment"].fillna(median_unemployment, inplace=True)
   df_copy.isnull().sum()
+  df['Unemployment'] = df['Unemployment'].round(2)
   return df_copy
   
 def Fuel_Price_Fixing(df): #Fxing the Fuel_Price column to remove the currency unit and convert it to float
