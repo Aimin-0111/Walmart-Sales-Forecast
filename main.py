@@ -14,6 +14,21 @@ url = "https://drive.google.com/uc?id=1u37-Uh9xNIE8UCMiPq8iNHCBqyiagVR3"
 gdown.download(url, "data.csv", quiet=False)
 df = pd.read_csv("data.csv")
 
+
+def IsHoliday_Fixing(df):
+  dic = {'no' : 'FALSE',
+        'YES' : 'TRUE',
+        'yes' : 'TRUE',
+        'NO' : 'FALSE', 
+        'FAL' : 'FALSE', 
+        'T' : 'TRUE',
+        'F' : 'FALSE', 
+        '1' : 'TRUE', 
+        '0' : 'TRUE'}
+  df['IsHoliday'] = df['IsHoliday'].apply(lambda x: dic.get(x,x))
+  df['IsHoliday'] = df['IsHoliday'].astype(bool)
+  return(df)
+    
 def Fuel_Price_Fixing(df): #Fxing the Fuel_Price column to remove the currency unit and convert it to float
     def unit_fixer(original): #defining a function to fix the unit of the Fuel_Price column
         split_arr = str(original).split(" ")
