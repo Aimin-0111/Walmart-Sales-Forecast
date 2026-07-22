@@ -28,7 +28,16 @@ def IsHoliday_Fixing(df):
   df['IsHoliday'] = df['IsHoliday'].apply(lambda x: dic.get(x,x))
   df['IsHoliday'] = df['IsHoliday'].astype(bool)
   return(df)
-    
+
+def Unemployment_cleaner(df_copy):
+
+  df_copy = df.copy()
+
+  median_unemployment = df_copy["Unemployment"].median()
+  df_copy["Unemployment"].fillna(median_unemployment, inplace=True)
+  df_copy.isnull().sum()
+  return df_copy
+  
 def Fuel_Price_Fixing(df): #Fxing the Fuel_Price column to remove the currency unit and convert it to float
     
     def unit_fixer(original): #defining a function to fix the unit of the Fuel_Price column
