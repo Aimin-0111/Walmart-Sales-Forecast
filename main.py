@@ -29,7 +29,7 @@ def IsHoliday_Fixing(df):
   df['IsHoliday'] = df['IsHoliday'].astype(bool)
   return(df)
 
-def Unemployment_cleaner(df_copy):
+def Unemployment_Fixing(df_copy):
 
   df_copy = df.copy()
 
