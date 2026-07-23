@@ -14,7 +14,7 @@ url = "https://drive.google.com/uc?id=1u37-Uh9xNIE8UCMiPq8iNHCBqyiagVR3"
 gdown.download(url, "data.csv", quiet=False)
 df = pd.read_csv("data.csv")
 
-''' Havn't tested yet
+
 def Markdowns_fixer(df,Markdown_name):
     def unit_fixer(original): #defining a function to fix the unit of the Fuel_Price column
         split_arr = str(original).split(" ")
@@ -30,7 +30,7 @@ def Markdowns_fixer(df,Markdown_name):
     df[Markdown_name] = df[Markdown_name].fillna(median_markdown) # replacing missing values without chained inplace assignment
     #print(f"After imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
     return df
-'''
+
 
 def IsHoliday_Fixing(df):
   dic = {'no' : 'FALSE',
@@ -77,7 +77,7 @@ def DataTesting():
 def main():
   return 0
 
-
+# ================================= Temperature  ================================
 # Make copy of data file
 df_copy = df.copy()
 
