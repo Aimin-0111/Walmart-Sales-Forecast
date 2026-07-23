@@ -76,3 +76,43 @@ def DataTesting():
 
 def main():
   return 0
+
+
+# Make copy of data file
+df_copy = df.copy()
+
+# Output data table
+df_copy
+
+# Find all unique values in temperature column
+df_copy['Temperature'].unique()
+
+# Show first 5 values
+df_copy["Temperature"].head()
+
+#- Object data type means mixed data types
+
+# Check null values
+
+df_copy[df_copy["Temperature"].str.contains("\?")].shape[0]
+
+#- No null values
+
+# One more check
+df_copy["Temperature"].isnull().sum().sum()
+
+def fix_temperature(temperatures):
+
+    # Convert to string and clean up extra whitespace
+    temperatures_str = str(temperatures).strip()
+    
+    # Remove extra trailing 'C's 
+    temperatures_str = temperatures_str.rstrip("C").strip()
+    
+    # Re-append a single 'C' standard suffix
+    return f"{float(temperatures_str):.2f} °C"
+
+# Assign temperature fix back to data file
+df_copy["Temperature"] = df_copy['Temperature'].astype(str).apply(fix_temperature)
+
+df_copy["Temperature"].head()
