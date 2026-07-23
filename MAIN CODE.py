@@ -7,7 +7,7 @@ import seaborn as sns
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
-import plotly.express as px
+
 
 import gdown
 
@@ -206,8 +206,12 @@ cols = [
 fig, axes = plt.subplots(3, 3, figsize=(15, 10))
 axes = axes.flatten()
 
+
 for i, col in enumerate(cols): #Create a scatter plot for each variable
-    axes[i].scatter(df_cleaned[col], df_cleaned['CPI'], s=5, alpha=0.3) # Size and transparency would be adjust base on the visual effect
+    sc = axes[i].scatter(df_cleaned[col], df_cleaned['CPI'],
+                         c=df_cleaned['Store'],   # color by store number
+                         cmap='tab20',            # colormap to use
+                         s=5, alpha=0.5)
     axes[i].set_xlabel(col)      # variable on x
     axes[i].set_ylabel('CPI')    # CPI on y
     axes[i].set_title(f'CPI vs {col}')
@@ -215,9 +219,8 @@ for i, col in enumerate(cols): #Create a scatter plot for each variable
 for j in range(len(cols), len(axes)):
     axes[j].axis('off')          # hide the leftover 9th panel
 
+fig.colorbar(sc, ax=axes.tolist(), label='Store')
 plt.tight_layout()
 plt.show()
 
 df_copy['Temperature']
-
-
