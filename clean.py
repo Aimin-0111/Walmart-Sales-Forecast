@@ -8,7 +8,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
-!pip install -q gdown
 import gdown
 
 url = "https://drive.google.com/uc?id=1u37-Uh9xNIE8UCMiPq8iNHCBqyiagVR3"
@@ -112,5 +111,16 @@ df_copy["Temperature"].head()
 
 
 def main():
+    
+    Markdowns_fixer(df_copy,"MarkDown1")
+    Markdowns_fixer(df_copy,"MarkDown2")
+    Markdowns_fixer(df_copy,"MarkDown3")
+    Markdowns_fixer(df_copy,"MarkDown4")
+    Markdowns_fixer(df_copy,"MarkDown5")
+    IsHoliday_Fixing(df_copy)
+    Unemployment_Fixing(df_copy)
+    Fuel_Price_Fixing(df_copy)
+    
+    
     df_cleaned = df_copy.copy()
     return df_cleaned
