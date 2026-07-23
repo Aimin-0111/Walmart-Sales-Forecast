@@ -111,7 +111,7 @@ df_copy["Temperature"] = df_copy['Temperature'].astype(str).apply(fix_temperatur
 df_copy["Temperature"].head()
 
 
-def main():
+def main(df_copy):
     
     df_copy = Markdowns_fixer(df_copy,"MarkDown1")
     df_copy = Markdowns_fixer(df_copy,"MarkDown2")
@@ -125,3 +125,5 @@ def main():
     
     df_cleaned = df_copy.copy()
     return df_cleaned
+df_cleaned = main(df_copy)
+df_cleaned.isnull().sum()
