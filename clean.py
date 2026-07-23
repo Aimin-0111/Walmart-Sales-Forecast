@@ -75,7 +75,8 @@ def DataTesting():
   
 
 def main():
-  return 0
+    df_cleaned = df_copy.copy()
+    return df_cleaned
 
 # ================================= Temperature  ================================
 # Make copy of data file
