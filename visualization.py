@@ -6,9 +6,10 @@ import seaborn as sns
 import plotly.express as px
 
 # numeric columns only — Date and IsHoliday aren't histogram material
-cols = ['Temperature', 'Fuel_Price',
-        'MarkDown1', 'MarkDown2', 'MarkDown3', 'MarkDown4', 'MarkDown5',
-        'Unemployment']   
+cols = [df_cleaned['Temperature'], df_cleaned['Fuel_Price'],
+        df_cleaned['MarkDown1'], df_cleaned['MarkDown2'], 
+        df_cleaned['MarkDown3'], df_cleaned['MarkDown4'], 
+        df_cleaned['MarkDown5'],df_cleaned['Unemployment']]   
 
 fig, axes = plt.subplots(3, 3, figsize=(15, 10))
 axes = axes.flatten()
