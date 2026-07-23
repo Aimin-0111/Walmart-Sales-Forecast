@@ -112,14 +112,14 @@ df_copy["Temperature"].head()
 
 def main():
     
-    Markdowns_fixer(df_copy,"MarkDown1")
-    Markdowns_fixer(df_copy,"MarkDown2")
-    Markdowns_fixer(df_copy,"MarkDown3")
-    Markdowns_fixer(df_copy,"MarkDown4")
-    Markdowns_fixer(df_copy,"MarkDown5")
-    IsHoliday_Fixing(df_copy)
-    Unemployment_Fixing(df_copy)
-    Fuel_Price_Fixing(df_copy)
+    df_copy = Markdowns_fixer(df_copy,"MarkDown1")
+    df_copy = Markdowns_fixer(df_copy,"MarkDown2")
+    df_copy = Markdowns_fixer(df_copy,"MarkDown3")
+    df_copy = Markdowns_fixer(df_copy,"MarkDown4")
+    df_copy = Markdowns_fixer(df_copy,"MarkDown5")
+    df_copy = IsHoliday_Fixing(df_copy)
+    df_copy = Unemployment_Fixing(df_copy)
+    df_copy = Fuel_Price_Fixing(df_copy)
     
     
     df_cleaned = df_copy.copy()
