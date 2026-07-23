@@ -86,7 +86,8 @@ def Fuel_Price_Fixing(df): #Fxing the Fuel_Price column to remove the currency u
     return df
   
 def DataTesting():
-  
+    print()
+    
 
 
 
