@@ -14,8 +14,8 @@ cols = [df_cleaned['Temperature'], df_cleaned['Fuel_Price'],
 fig, axes = plt.subplots(3, 3, figsize=(15, 10))
 axes = axes.flatten()
 
-for i, col in enumerate(cols):
-    axes[i].scatter(df[col], df['CPI'], s=5, alpha=0.3)
+for i, col in enumerate(cols): #Create a scatter plot for each variable
+    axes[i].scatter(df[col], df['CPI'], s=5, alpha=0.3) # Size and transparency would be adjust base on the visual effect
     axes[i].set_xlabel(col)      # variable on x
     axes[i].set_ylabel('CPI')    # CPI on y
     axes[i].set_title(f'CPI vs {col}')
