@@ -1,3 +1,4 @@
+# ================================= Intialization  ================================
 import requests
 
 import numpy as np
@@ -14,6 +15,20 @@ url = "https://drive.google.com/uc?id=1u37-Uh9xNIE8UCMiPq8iNHCBqyiagVR3"
 gdown.download(url, "data.csv", quiet=False)
 df = pd.read_csv("data.csv")
 
+# Make copy of data file
+df_copy = df.copy()
+# Output data table
+df_copy
+# Find all unique values in temperature column
+df_copy['Temperature'].unique()
+# Show first 5 values
+df_copy["Temperature"].head()
+#- Object data type means mixed data types
+# Check null values
+df_copy[df_copy["Temperature"].str.contains("\?")].shape[0]
+#- No null values
+# One more check
+df_copy["Temperature"].isnull().sum().sum()
 
 def Markdowns_fixer(df,Markdown_name):
     def unit_fixer(original): #defining a function to fix the unit of the Fuel_Price column
@@ -74,33 +89,10 @@ def Fuel_Price_Fixing(df): #Fxing the Fuel_Price column to remove the currency u
 def DataTesting():
   
 
-def main():
-    df_cleaned = df_copy.copy()
-    return df_cleaned
+
 
 # ================================= Temperature  ================================
-# Make copy of data file
-df_copy = df.copy()
 
-# Output data table
-df_copy
-
-# Find all unique values in temperature column
-df_copy['Temperature'].unique()
-
-# Show first 5 values
-df_copy["Temperature"].head()
-
-#- Object data type means mixed data types
-
-# Check null values
-
-df_copy[df_copy["Temperature"].str.contains("\?")].shape[0]
-
-#- No null values
-
-# One more check
-df_copy["Temperature"].isnull().sum().sum()
 
 def fix_temperature(temperatures):
 
@@ -117,3 +109,8 @@ def fix_temperature(temperatures):
 df_copy["Temperature"] = df_copy['Temperature'].astype(str).apply(fix_temperature)
 
 df_copy["Temperature"].head()
+
+
+def main():
+    df_cleaned = df_copy.copy()
+    return df_cleaned
