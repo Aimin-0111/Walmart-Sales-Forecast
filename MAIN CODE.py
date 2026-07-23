@@ -222,7 +222,9 @@ for i, col in enumerate(cols): #Create a scatter plot for each variable
 for j in range(len(cols), len(axes)):
     axes[j].axis('off')          # hide the leftover 9th panel
 
-fig.colorbar(sc, ax=axes.tolist(), label='Store')
+cax = axes[8].inset_axes([0.35, 0.05, 0.08, 0.9])   # [x, y, width, height] in panel coords
+fig.colorbar(sc, cax=cax, label='Store')
+
 plt.tight_layout()
 plt.show()
 
