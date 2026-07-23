@@ -162,9 +162,9 @@ def Markdowns_fixer(df,Markdown_name):
     print("\n") 
     df[Markdown_name] = df[Markdown_name].apply(lambda x: unit_fixer(x))
     #df[Markdown_name] = df[Markdown_name].apply(lambda x: type(x)) Testing the type of the Markdown_name column after applying the unit_fixer function
-    median_markdown = df[Markdown_name].median() # calculating the median
+    '''median_markdown = df[Markdown_name].median() # calculating the median
     df[Markdown_name] = df[Markdown_name].fillna(median_markdown) # replacing missing values without chained inplace assignment
-    #print(f"After imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
+'''    #print(f"After imputation, {Markdown_name} has: {df[Markdown_name].isnull().sum()}")
     return df
 
 def main(df_copy):
@@ -208,10 +208,13 @@ axes = axes.flatten()
 
 
 for i, col in enumerate(cols): #Create a scatter plot for each variable
-    sc = axes[i].scatter(df_cleaned[col], df_cleaned['CPI'],
-                         c=df_cleaned['Store'],   # color by store number
-                         cmap='tab20',            # colormap to use
-                         s=5, alpha=0.5)
+
+    x = df_cleaned[col]
+    sc = axes[i].scatter(x, df_cleaned['CPI'], c=df_cleaned['Store'],
+                         cmap='tab20', s=5, alpha=0.5)
+    lo, hi = x.quantile([0.01, 0.98])
+    pad = (hi - lo) * 0.05
+    axes[i].set_xlim(lo - pad, hi + pad)
     axes[i].set_xlabel(col)      # variable on x
     axes[i].set_ylabel('CPI')    # CPI on y
     axes[i].set_title(f'CPI vs {col}')
